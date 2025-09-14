@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" version="5.0" method="upgrade">
+    <name>com_articlepush</name>
+    <author>Datatex.gr</author>
+    <creationDate>September 2025</creationDate>
+    <copyright>(C) 2025 Datatex.gr</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <version>1.0.0</version>
+    <description>Push Joomla articles to remote Joomla sites via JWT</description>
+
+    <namespace path="src">Joomla\Component\Articlepush</namespace>
+
+    <!-- Εγκατάσταση SQL -->
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+
+    <!-- Απεγκατάσταση SQL -->
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+
+    <!-- Administration section -->
+    <administration>
+        <!-- Κύριο μενού -->
+        <menu img="class:bookmark">Article Push</menu>
+
+        <!-- Submenu -->
+        <submenu>
+            <menu
+                link="option=com_articlepush&amp;view=articles"
+                view="articles"
+                img="class:article"
+                alt="Articles"
+            >
+                Articles
+            </menu>
+            <menu
+                link="option=com_articlepush&amp;view=sites"
+                view="sites"
+                img="class:article"
+                alt="Sites"
+            >
+                Sites
+            </menu>
+        </submenu>
+
+        <!-- Αρχεία του admin -->
+        <files folder="admin">
+            <filename>articlepush.php</filename>
+            <filename>controller.php</filename>
+            <folder>controllers</folder>
+            <folder>models</folder>
+            <folder>views</folder>
+            <folder>sql</folder>
+        </files>
+    </administration>
+</extension>
