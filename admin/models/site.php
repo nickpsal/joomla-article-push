@@ -49,9 +49,20 @@ class ArticlepushModelSite extends AdminModel
         return $data;
     }
 
+    // public function save($data)
+    // {
+    //     if (!empty($data['api_password'])) {
+    //         $crypt = new Crypt;
+    //         $key   = new Key('simple', Factory::getConfig()->get('secret'), 'encrypt');
+    //         $data['api_password'] = $crypt->encrypt($data['api_password'], $key);
+    //     }
+
+    //     return parent::save($data);
+    // }
+
     public function save($data)
     {
-        // \Joomla\CMS\Factory::getApplication()->enqueueMessage('DEBUG: ID = ' . ($data['id'] ?? 'NULL'), 'notice');
+        \Joomla\CMS\Factory::getApplication()->enqueueMessage('DEBUG: ID = ' . ($data['id'] ?? 'NULL'), 'notice');
         if (empty($data['api_password']) && !empty($data['id'])) {
             $old = $this->getItem($data['id']);
             $data['api_password'] = $old->api_password; // Ήδη κρυπτογραφημένο
